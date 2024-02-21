@@ -1,7 +1,6 @@
 numpy
 streamlit
 streamlit-echarts
-st-on-hover-tabs
+streamlit-on-hover-tabs
 pandas
-matplotlib
 IPython

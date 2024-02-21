@@ -13,7 +13,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 import streamlit as st
-import IPython
+from IPython.display import Image, display
 
 
 st.markdown('''

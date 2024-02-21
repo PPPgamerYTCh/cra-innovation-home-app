@@ -7,101 +7,20 @@ from st_on_hover_tabs import on_hover_tabs
 import streamlit as st
 st.set_page_config(layout="wide")
 from streamlit_drawable_canvas import st_canvas
-from transformers import AutoFeatureExtractor, SwinForImageClassification
-import warnings
-from torchvision import transforms
-from datasets import load_dataset
 import cv2
-import torch
-from torch import nn
 from typing import List, Callable, Optional
 import os
 import pandas as pd
-import pydicom
-import openai
-from openai import OpenAI
 from IPython.display import Image, display
 import responses
 from PIL import Image
-import requests
 from io import BytesIO
-import io
-import tensorflow
 from PIL import Image
 import numpy as np
 import matplotlib.pyplot as plt
 import tempfile
 import pandas as pd
-from datetime import datetime
 import streamlit as st
-
-labels = ["Normal"]
-model_name_or_path = "Santipab/Esan-code-Maimeetrang-model-action-recognition"
-
-@st.cache_resource(show_spinner=False,ttl=1800,max_entries=2)
-def FeatureExtractor(model_name_or_path):
-    feature_extractor = AutoFeatureExtractor.from_pretrained(model_name_or_path)
-    return feature_extractor
-
-
-@st.cache_resource(show_spinner=False,ttl=1800,max_entries=2)
-def LoadModel(model_name_or_path):
-    model = SwinForImageClassification.from_pretrained(
-        model_name_or_path,
-        num_labels=len(labels),
-        id2label={int(i): c for i, c in enumerate(labels)},
-        label2id={c: int(i) for i, c in enumerate(labels)},
-        ignore_mismatched_sizes=True)
-    return model
-
-
-# Model wrapper to return a tensor
-class HuggingfaceToTensorModelWrapper(torch.nn.Module):
-    def __init__(self, model):
-        super(HuggingfaceToTensorModelWrapper, self).__init__()
-        self.model = model
-
-    def forward(self, x):
-        return self.model(x).logits
-
-# """ Translate the category name to the category index.
-#     Some models aren't trained on Imagenet but on even larger "data"sets,
-#     so we can't just assume that 761 will always be remote-control.
-
-# """
-def category_name_to_index(model, category_name):
-    name_to_index = dict((v, k) for k, v in model.config.id2label.items())
-    return name_to_index[category_name]
-    
-# """ Helper function to run GradCAM on an image and create a visualization.
-#     (note to myself: this is probably useful enough to move into the package)
-#     If several targets are passed in targets_for_gradcam,
-#     e.g different categories,
-#     a visualization for each of them will be created.
-    
-# """
-    
-def print_top_categories(model, img_tensor, top_k=5):
-    feature_extractor = FeatureExtractor(model_name_or_path)
-    inputs = feature_extractor(images=img_tensor, return_tensors="pt")
-    outputs = model(**inputs)
-    logits  = outputs.logits
-    logits  = model(img_tensor.unsqueeze(0)).logits
-    indices = logits.cpu()[0, :].detach().numpy().argsort()[-top_k :][::-1]
-    probabilities = nn.functional.softmax(logits, dim=-1)
-    topK = dict()
-    for i in indices:
-        topK[model.config.id2label[i]] = probabilities[0][i].item()*100
-    return topK
-
-def swinT_reshape_transform_huggingface(tensor, width, height):
-    result = tensor.reshape(tensor.size(0),
-                            height,
-                            width,
-                            tensor.size(2))
-    result = result.transpose(2, 3).transpose(1, 2)
-    return result
-
 
 
 st.markdown('''
@@ -206,7 +125,4 @@ with st.sidebar:
 
 data_base = []
 if tabs == 'Home':
-    st.image('home.png',use_column_width=True)
-
-
-
+    st.image('/home/home.png',use_column_width=True)

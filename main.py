@@ -6,7 +6,6 @@ from streamlit_echarts import st_echarts
 from st_on_hover_tabs import on_hover_tabs
 import streamlit as st
 st.set_page_config(layout="wide")
-from streamlit_drawable_canvas import st_canvas
 import cv2
 from typing import List, Callable, Optional
 import os

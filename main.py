@@ -6,7 +6,6 @@ import streamlit as st
 st.set_page_config(layout="wide")
 import os
 import pandas as pd
-from IPython.display import Image, display
 from PIL import Image
 from PIL import Image
 import numpy as np

@@ -1,3 +1,5 @@
+!pip install streamlit-echarts
+!pip install st-on-hover-tabs
 import numpy as np
 from PIL import Image
 import PIL.Image as Image

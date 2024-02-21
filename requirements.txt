@@ -2,6 +2,6 @@ numpy
 streamlit
 streamlit-echarts
 streamlit-on-hover-tabs
-streamlit-drawable-canvas
+opencv-python
 pandas
 IPython

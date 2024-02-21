@@ -124,4 +124,4 @@ with st.sidebar:
 
 data_base = []
 if tabs == 'Home':
-    st.image('/home/home.png',use_column_width=True)
+    st.image('home.png',use_column_width=True)

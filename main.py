@@ -97,7 +97,7 @@ st.markdown(
 </div>
     """, unsafe_allow_html=True)
 
-with open("assets/css/style.css") as f:
+with open(".../assets/css/style.css") as f:
     st.markdown(f"<style> {f.read()} </style>",unsafe_allow_html=True)
 with open("assets/webfonts/font.txt") as f:
     st.markdown(f.read(),unsafe_allow_html=True)
@@ -124,4 +124,4 @@ with st.sidebar:
 
 data_base = []
 if tabs == 'Home':
-    st.image('home.png',use_column_width=True)
+    st.image('.../home.png',use_column_width=True)

@@ -4,4 +4,4 @@ streamlit-echarts
 streamlit-on-hover-tabs
 opencv-python
 pandas
-IPython
+matplotlib 

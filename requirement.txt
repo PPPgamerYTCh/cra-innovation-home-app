@@ -1,0 +1,9 @@
+numpy
+Pillow
+streamlit
+streamlit-echarts
+st-on-hover-tabs
+opencv-python
+pandas
+matplotlib
+IPython
